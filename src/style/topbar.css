@@ -1,0 +1,20 @@
+.topbar {
+    background-color: #333333;
+    color: #fff;
+}
+
+.topbar_inner {
+    padding-right: 1rem;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 300;
+    height: 55px;
+    display: grid;
+    place-content: center right;
+}
+
+.topbar .tel-num {
+    font-weight: 800;
+    margin-left: 0.5rem;
+    color: #ccc;
+}
