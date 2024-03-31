@@ -33,9 +33,82 @@ nav {
     text-transform: uppercase;
     font-weight: 300;
     border-right: 1px solid #eee;
+    position: relative;
+    background-color: #fff;
+    transition: 0.4s;
+    cursor: pointer;
 }
 
-.navbutton_active {
+.navbutton_active,
+.navbutton:hover {
     background-color: var(--secondary-color);
     color: #fff;
+}
+
+.navbutton:has(.nav-dropdown) {
+    cursor: not-allowed;
+}
+
+.nav-dropdown {
+    position: absolute;
+    background-color: #333;
+    padding: 1rem;
+    color: #fff;
+    text-transform: none;
+    left: 0px;
+    top: 100%;
+    width: 200px;
+    opacity: 0;
+    display: none;
+}
+
+.dropdown-navbutton {
+    padding: 0.5rem;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.dropdown-navbutton:hover {
+    color: var(--primary-color);
+}
+
+.navbutton:hover .nav-dropdown {
+    -webkit-animation: spMenuFadeInUp 400ms;
+    animation: spMenuFadeInUp 400ms;
+    animation-fill-mode: forwards;
+    display: block;
+}
+
+@-webkit-keyframes spMenuFadeInUp {
+    0% {
+        display: none;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+        -webkit-transform: translate3d(0, 30px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+    }
+}
+
+@keyframes spMenuFadeInUp {
+    0% {
+        display: none;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
 }
