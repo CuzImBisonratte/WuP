@@ -103,6 +103,9 @@ articles.forEach(article => {
         }
     });
 
+    // Choose right navigation item
+    if (article_attributes.active_nav) article_output = article_output.replace("navbutton-activate-" + article_attributes.active_nav, "navbutton_active");
+
     fs.mkdirSync(path.dirname(article_output_path), { recursive: true });
     fs.writeFileSync(article_output_path, article_output);
 });
