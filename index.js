@@ -19,7 +19,7 @@ const fs = require('fs');
 const path = require('path');
 const front_matter = require('front-matter');
 
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({ simpleLineBreaks: true });
 
 // Create output directory
 if (fs.existsSync(config.build.output_dir)) fs.rmSync(config.build.output_dir, { recursive: true });
