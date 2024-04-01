@@ -39,6 +39,10 @@ nav {
     cursor: pointer;
 }
 
+.navbutton:first-child {
+    border-left: 1px solid #eee;
+}
+
 .navbutton_active,
 .navbutton:hover {
     background-color: var(--secondary-color);
@@ -77,6 +81,12 @@ nav {
     animation: spMenuFadeInUp 400ms;
     animation-fill-mode: forwards;
     display: block;
+}
+
+#nav-spacer {
+    height: 90px;
+    position: relative;
+    display: none;
 }
 
 @-webkit-keyframes spMenuFadeInUp {
