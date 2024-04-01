@@ -72,7 +72,7 @@ articles.forEach(article => {
     const article_output_path = path.join(config.build.output_dir, article_attributes.url, "index.html");
 
     // Generate article output
-    const article_output = article_html.replace(/[äöüÄÖÜß€$&§@]/g, match => {
+    var article_output = article_html.replace(/[äöüÄÖÜß€$&§@]/g, match => {
         switch (match) {
             case 'ä':
                 return '&auml;';
