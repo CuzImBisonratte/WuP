@@ -1,0 +1,172 @@
+<!-- navbutton: kanzlei -->
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    {head}
+  </head>
+  <body>
+    {topbar} {navigation}
+    <main>
+      <div class="container">
+        <div class="partner-container">
+          <div class="text">
+            <h1>Diplom-Kauffrau Barbara Protzen</h1>
+            <p>
+                Wirtschaftsprüferin, Steuerberaterin, Rechtsanwältin <br />
+                Jahrgang 1967
+            </p>
+            <p>
+                Studium der Rechtswissenschaften in München und der
+                Betriebswirtschaftslehre an der Fernuniversität Hagen.<br />
+                1995 Zulassung zur Anwaltschaft<br />
+                1999 Bestellung als Steuerberaterin<br />
+                2003 Bestellung als Wirtschaftsprüferin<br />
+                2011 Zusatzausbildung zum Fachberater für Unternehmensnachfolge<br />
+            </p>
+            <p>
+                zunächst Tätigkeit bei einer internationalen
+                Wirtschaftsprüfungsgesellschaft in Hamburg<br />
+                Partnerin von Wissler & Protzen seit 1999
+            </p>
+
+            <p>
+                <u><b>Tätigkeitsschwerpunkte:</b></u>
+                <br />
+            </p>
+
+            <p>
+                <ul>
+                <li>Wirtschaftsprüfung</li>
+                <li>Steuerberatung</li>
+                <li>Selbstanzeigen</li>
+                <li>Unternehmensnachfolge</li>
+                <li>Betreuung von Stiftungen und Vereinen</li>
+                <li>Beratung rund um das Testament</li>
+                <li>Testamentsvollstreckung</li>
+                </ul>
+            </p>
+
+            <p>
+                <h2>Ehrenamtliche Tätigkeiten</h2>
+                <ul>
+                    <li>Freundeskreis Lichtentaler Allee e. V. Initiative Weltkulturerbe, Schatzmeisterin</li>
+                    <li>Inner Wheel Hilfe e.V. Baden-Baden Favorite; 1. Vorsitzende</li>
+                </ul>
+            </p>
+          </div>
+          <div class="image">
+            <img src="/res/images/bp_n.webp" alt="" srcset="" />
+          </div>
+        </div>
+        <hr>
+        <div class="partner-container">
+          <div class="text">
+            <h1>Matthias Protzen</h1>
+            <p>
+                Wirtschaftsprüfer, Rechtsanwalt, Fachanwalt für Steuerrecht <br />
+                Jahrgang 1966
+            </p>
+            <p>
+                Studium der Rechtswissenschaften in Würzburg, Lausanne und Freiburg. <br />
+                1995 Zulassung zur Anwaltschaft<br />
+                2003 Zulassung als Fachanwalt für Steuerrecht<br />
+                2004 Bestellung als Wirtschaftsprüfer<br />
+            </p>
+            <p>
+                zunächst Tätigkeit bei einer internationalen
+                Wirtschaftsprüfungsgesellschaft in Hamburg<br />
+                Partnerin von Wissler & Protzen seit 1999
+            </p>
+
+            <p>
+                <u><b>Tätigkeitsschwerpunkte:</b></u>
+                <br />
+            </p>
+
+            <p>
+                <ul>
+                <li>Wirtschaftsprüfung</li>
+                <li>Betreuung von Kredit-, Zahlungs- und Finanzdienstleistungsinstituten</li>
+                <li>Unternehmensplanung</li>
+                <li>Unternehmensbewertung</li>
+                <li>Unternehmenstransaktionen</li>
+                <li>umfassende Beratung von Ärzten</li>
+                </ul>
+            </p>
+
+            <p>
+                <h2>Ehrenamtliche Tätigkeiten</h2>
+                <ul>
+                    <li>Deutsches Rotes Kreuz Baden-Baden; Kreisverbandsvorsitzender</li>
+                    <li>Rotary Club Baden-Baden; Vorstandsmitglied</li>
+                </ul>
+            </p>
+          </div>
+          <div class="image">
+            <img src="/res/images/m_p.webp" alt="" srcset="" />
+          </div>
+        </div>
+      </div>
+    </main>
+    {footer}
+    <script src="/res/scripts/nav-stick.js"></script>
+    <style>
+      main {
+        padding: 100px 0;  
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      .partner-container {
+        display: grid;
+        grid-template-columns: 1fr min-content;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: "text image";
+      }
+
+      .text {
+        grid-area: text;
+      }
+
+      .image {
+        grid-area: image;
+      }
+
+      h1 {
+        color: #004571;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 33px;
+        position: relative;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 10px;
+      }
+
+      h2{
+        color: #004571;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 33px;
+        margin-bottom: 0px;
+        position: relative;
+        text-align: left;
+        text-transform: none;
+        padding-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      hr {
+        margin: 2rem 0;
+        color: inherit;
+        background-color: currentColor;
+        border: 0;
+        opacity: .25;
+        height: 1px;
+      }
+    </style>
+  </body>
+</html>
