@@ -50,8 +50,9 @@ function component_replacer(content, article = "") {
 // 
 if (config.build.index.copy) {
     const index_content = fs.readFileSync("src/index.html", { encoding: 'utf-8' });
-    if (config.build.index.use_components) fs.writeFileSync(path.join(config.build.output_dir, "index.html"), component_replacer(index_content));
-    else fs.writeFileSync(path.join(config.build.output_dir, "index.html"), index_content);
+    var index_output = config.build.index.use_components ? component_replacer(index_content) : index_content;
+    index_output = index_output.replace("navbutton-activate-home", "navbutton_active");
+    fs.writeFileSync(path.join(config.build.output_dir, "index.html"), index_output);
 }
 
 // 
