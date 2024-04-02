@@ -121,10 +121,20 @@ articles.forEach(article => {
 if (config.src.static.copy) {
     const static_files = fs.readdirSync("src/static", { encoding: 'utf-8' });
     static_files.forEach(file => {
+        // Load file content and generate output paths and content
         const file_path = path.join("src/static", file);
-        const file_content = fs.readFileSync(file_path, { encoding: 'utf-8' });
         const file_output_path = path.join(config.build.output_dir, file.replace(".html", ""), "index.html");
+        const file_content = fs.readFileSync(file_path, { encoding: 'utf-8' });
+        var file_output = config.src.static.use_components ? component_replacer(file_content) : file_content;
+
+        // Search the output for navbutton: tags and activate them
+        if (file_output.includes("<!-- navbutton: ")) {
+            const navbutton_name = file_output.match(/<!-- navbutton: (.*) -->/)[1];
+            file_output = file_output.replace("navbutton-activate-" + navbutton_name, "navbutton_active");
+        }
+
+        // Write file to output directory
         fs.mkdirSync(path.dirname(file_output_path), { recursive: true });
-        fs.writeFileSync(file_output_path, (config.src.static.use_components) ? component_replacer(file_content) : file_content);
+        fs.writeFileSync(file_output_path, file_output);
     });
 }
