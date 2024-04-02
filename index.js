@@ -2,6 +2,10 @@
 const config = {
     src: {
         components_dir: 'src/components', // The directory where the components are stored (like header, footer, etc.)
+        static: {
+            copy: true, // Copy the src/static directory to the output directory
+            use_components: true // Use the modules in the src/components directory
+        }
     },
     build: {
         output_dir: 'build',
@@ -109,3 +113,17 @@ articles.forEach(article => {
     fs.mkdirSync(path.dirname(article_output_path), { recursive: true });
     fs.writeFileSync(article_output_path, article_output);
 });
+
+// 
+// Static files
+// 
+if (config.src.static.copy) {
+    const static_files = fs.readdirSync("src/static", { encoding: 'utf-8' });
+    static_files.forEach(file => {
+        const file_path = path.join("src/static", file);
+        const file_content = fs.readFileSync(file_path, { encoding: 'utf-8' });
+        const file_output_path = path.join(config.build.output_dir, file.replace(".html", ""), "index.html");
+        fs.mkdirSync(path.dirname(file_output_path), { recursive: true });
+        fs.writeFileSync(file_output_path, (config.src.static.use_components) ? component_replacer(file_content) : file_content);
+    });
+}
