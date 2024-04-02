@@ -1,5 +1,12 @@
+# Ignore node_modules
 /node_modules
+
+# Ignore built files
 /build
-/articles
+
+# Ignore some resources
 /res/images
 /res/fonts
+
+# Ignore all articles
+/articles
