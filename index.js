@@ -21,9 +21,8 @@ const config = {
 const showdown = require('showdown');
 const fs = require('fs');
 const path = require('path');
-const front_matter = require('front-matter');
 
-const converter = new showdown.Converter({ simpleLineBreaks: true });
+const converter = new showdown.Converter({ simpleLineBreaks: true, metadata: true });
 
 // Create output directory
 if (fs.existsSync(config.build.output_dir)) fs.rmSync(config.build.output_dir, { recursive: true });
@@ -60,13 +59,11 @@ if (config.build.index.copy) {
 // 
 const articles = fs.readdirSync("articles");
 articles.forEach(article => {
-    const article_path = path.join("articles", article);
-    const article_data = front_matter(fs.readFileSync(article_path, { encoding: 'utf-8' }));
-    const article_content = article_data.body;
-    const article_attributes = article_data.attributes;
+    const article_content = fs.readFileSync(path.join("articles", article), { encoding: "utf-8" });
 
     // Convert article content to HTML
     const article_content_converted = converter.makeHtml(article_content);
+    const article_attributes = converter.getMetadata();
     const article_html = component_replacer(fs.readFileSync(path.join(config.src.components_dir, "article.html"), { encoding: 'utf-8' }), article_content_converted);
 
     // Generate article output path
