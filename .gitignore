@@ -7,6 +7,7 @@
 # Ignore some resources
 /res/images
 /res/fonts
+/res/downloads
 
 # Ignore all articles
 /articles
