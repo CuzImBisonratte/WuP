@@ -22,7 +22,15 @@ const showdown = require('showdown');
 const fs = require('fs');
 const path = require('path');
 
-const converter = new showdown.Converter({ simpleLineBreaks: true, metadata: true });
+const converter = new showdown.Converter({
+    simpleLineBreaks: true,
+    metadata: true,
+    openLinksInNewWindow: true,
+    strikethrough: true,
+    tables: true,
+    tasklists: true,
+    underline: true
+});
 
 // Create output directory
 if (fs.existsSync(config.build.output_dir)) fs.rmSync(config.build.output_dir, { recursive: true });
