@@ -6,15 +6,42 @@
   <body>
     {topbar} {navigation}
     <div id="nav-spacer"></div>
-
     <main>
       <div class="container">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-          natus. Ipsa, quas itaque debitis exercitationem autem libero molestias
-          perferendis fuga sequi rerum fugiat laudantium sunt hic reprehenderit
-          possimus sapiente harum?
-        </p>
+        <div id="hero">
+          <div class="hero-tile">
+            <img src="/res/images/icons/ico-wp.png" alt="" />
+            <h1>Wirtschaftsprüfung</h1>
+            <p>
+              Effektive Prüfungsdurchführung sichert Ihren kontinuierlichen
+              Erfolg
+            </p>
+          </div>
+          <div class="hero-tile">
+            <img src="/res/images/icons/ico-sb.png" alt="" />
+            <h1>Steuerberatung</h1>
+            <p>Qualifizierte Betreuung über die Steuererklärung hinaus</p>
+          </div>
+          <div class="hero-tile">
+            <img src="/res/images/icons/ico-rw.png" alt="" />
+            <h1>Rechnungswesen</h1>
+            <p>Entscheidungshilfe statt lästige Notwendigkeit</p>
+          </div>
+          <div class="hero-tile">
+            <img src="/res/images/icons/ico-wb.png" alt="" />
+            <h1>Wirtschaftsberatung</h1>
+            <p>
+              Unternehmerische Entscheidungen benötigen ein sicheres Fundament
+            </p>
+          </div>
+          <div class="hero-tile">
+            <img src="/res/images/icons/ico-rb.png" alt="" />
+            <h1>Rechtsberatung</h1>
+            <p>
+              Maßgeschneiderte Umsetzung unternehmerischer und privater Ziele
+            </p>
+          </div>
+        </div>
         <div class="rl-divider">
           <div class="left">
             <img src="/res/images/kwp_n.webp" alt="" srcset="" />
@@ -155,6 +182,37 @@
     </main>
     {footer}
     <style>
+      #hero {
+        margin: 5rem 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0.5rem;
+        grid-auto-flow: row;
+        /* grid-template-areas: ". . . . ."; */
+        text-align: center;
+      }
+
+      .hero-tile {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 1.5rem 0.5rem;
+      }
+
+      .hero-tile h1 {
+        color: rgba(255, 255, 255, 0.5);
+        text-transform: uppercase;
+        font-size: 17px;
+        margin-top: 20px;
+        font-weight: 300;
+      }
+
+      .hero-tile p {
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
       .rl-divider {
         display: grid;
         grid-template-columns: 1fr 1fr;
