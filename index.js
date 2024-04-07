@@ -182,7 +182,7 @@ if (config.src.htaccess.copy) htaccess_content = fs.readFileSync("src/.htaccess"
 if (config.src.htaccess.generate_error_rewrites) {
     htaccess_content += "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\n";
     error_codes.forEach(code => {
-        htaccess_content += `RewriteRule (.*) /errors/${code}.html [L,R=404]\n`;
+        if (code == "404") htaccess_content += `RewriteRule (.*) /errors/${code}.html [L,R=${code}]\n`;
         htaccess_content += `ErrorDocument ${code} /errors/${code}.html\n`;
     });
 }
