@@ -8,8 +8,11 @@ const config = {
         },
         errors: {
             copy: true, // Copy the src/errors directory to the output directory
-            use_components: true, // Use the modules in the src/components directory
-            generate_htaccess: true // Generate a .htaccess file for the error pages
+            use_components: true // Use the modules in the src/components directory
+        },
+        htaccess: {
+            copy: true, // Copy the src/.htaccess file to the output directory
+            generate_error_rewrites: true, // Generate error rewrites for the .htaccess file
         }
     },
     build: {
@@ -158,10 +161,10 @@ if (config.src.static.copy) {
 // Error pages
 //
 
+var error_codes = [];
 if (config.src.errors.copy) {
     fs.mkdirSync(path.join(config.build.output_dir, "errors"), { recursive: true });
     const errors = fs.readdirSync("src/errors", { encoding: 'utf-8' });
-    var error_codes = [];
     errors.forEach(error => {
         const error_content = fs.readFileSync(path.join("src/errors", error), { encoding: 'utf-8' });
         const error_output = config.src.errors.use_components ? component_replacer(error_content) : error_content;
@@ -169,10 +172,18 @@ if (config.src.errors.copy) {
         fs.writeFileSync(error_output_path, error_output);
         error_codes.push(error.replace(".html", ""));
     });
-    var htaccess_content = "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\n";
+}
+
+// 
+// Generate .htaccess file
+//
+var htaccess_content = "";
+if (config.src.htaccess.copy) htaccess_content = fs.readFileSync("src/.htaccess", { encoding: 'utf-8' });
+if (config.src.htaccess.generate_error_rewrites) {
+    htaccess_content += "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\n";
     error_codes.forEach(code => {
         htaccess_content += `RewriteRule (.*) /errors/${code}.html [L,R=404]\n`;
         htaccess_content += `ErrorDocument ${code} /errors/${code}.html\n`;
     });
-    fs.writeFileSync(path.join(config.build.output_dir, ".htaccess"), htaccess_content);
 }
+fs.writeFileSync(path.join(config.build.output_dir, ".htaccess"), htaccess_content);

@@ -11,3 +11,6 @@
 
 # Ignore all articles
 /articles
+
+# Ignore htaccess predefined rules
+/src/.htaccess
