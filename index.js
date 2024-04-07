@@ -82,7 +82,9 @@ articles.forEach(article => {
     const article_output_path = path.join(config.build.output_dir, article_attributes.url, "index.html");
 
     // Generate article output
-    var article_output = article_html.replace(/[äöüÄÖÜß€$&§@]/g, match => {
+    // 
+    // Because of unknown behavior of showdown (GH-Issue:#1004) sometimes ampersands are html-encoded and sometimes they aren't, therefore we have to check for already encoded ampersands
+    var article_output = article_html.replace(/[äöüÄÖÜß€$&§@](?!amp;)/g, match => {
         switch (match) {
             case 'ä':
                 return '&auml;';
