@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    {head}
+  </head>
+  <body>
+    {topbar} {navigation}
+    <main>
+      <div class="container">
+        <h1>404 - Seite nicht gefunden</h1>
+        <p>
+          Die von Ihnen aufgerufene Seite konnte nicht gefunden werden.
+          Möglicherweise wurde sie verschoben oder gelöscht. Bitte überprüfen
+          Sie die URL und versuchen Sie es erneut.
+        </p>
+        <hr />
+        <p><a href="/">Zurück zur Startseite</a></p>
+        <p>
+          <a href="javascript:history.back()">Zurück zur vorherigen Seite</a>
+        </p>
+      </div>
+    </main>
+    {footer}
+    <script src="/res/scripts/nav-stick.js"></script>
+    <style>
+      main {
+        padding: 100px 0;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      h1 {
+        color: #004571;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 33px;
+        position: relative;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 10px;
+      }
+
+      hr {
+        margin: 2rem 0;
+        color: inherit;
+        background-color: currentColor;
+        border: 0;
+        opacity: 0.25;
+        height: 1px;
+      }
+    </style>
+  </body>
+</html>

@@ -5,6 +5,11 @@ const config = {
         static: {
             copy: true, // Copy the src/static directory to the output directory
             use_components: true // Use the modules in the src/components directory
+        },
+        errors: {
+            copy: true, // Copy the src/errors directory to the output directory
+            use_components: true, // Use the modules in the src/components directory
+            generate_htaccess: true // Generate a .htaccess file for the error pages
         }
     },
     build: {
@@ -147,4 +152,27 @@ if (config.src.static.copy) {
         fs.mkdirSync(path.dirname(file_output_path), { recursive: true });
         fs.writeFileSync(file_output_path, file_output);
     });
+}
+
+// 
+// Error pages
+//
+
+if (config.src.errors.copy) {
+    fs.mkdirSync(path.join(config.build.output_dir, "errors"), { recursive: true });
+    const errors = fs.readdirSync("src/errors", { encoding: 'utf-8' });
+    var error_codes = [];
+    errors.forEach(error => {
+        const error_content = fs.readFileSync(path.join("src/errors", error), { encoding: 'utf-8' });
+        const error_output = config.src.errors.use_components ? component_replacer(error_content) : error_content;
+        const error_output_path = path.join(config.build.output_dir, "errors", error);
+        fs.writeFileSync(error_output_path, error_output);
+        error_codes.push(error.replace(".html", ""));
+    });
+    var htaccess_content = "RewriteEngine On\nRewriteBase /\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\n";
+    error_codes.forEach(code => {
+        htaccess_content += `RewriteRule (.*) /errors/${code}.html [L,R=404]\n`;
+        htaccess_content += `ErrorDocument ${code} /errors/${code}.html\n`;
+    });
+    fs.writeFileSync(path.join(config.build.output_dir, ".htaccess"), htaccess_content);
 }
