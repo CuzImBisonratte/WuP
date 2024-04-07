@@ -2,6 +2,8 @@ footer {
     background-color: #333333;
     color: #888888;
     padding: 40px 0px 40px 0px;
+    font-size: 15px;
+    line-height: 19px;
 }
 
 .footer-dreiteiler {
@@ -37,6 +39,11 @@ footer h3 {
     font-weight: normal;
 }
 
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
 #sub-footer-note {
     font-size: 12px;
     color: #333;
@@ -44,5 +51,5 @@ footer h3 {
 }
 
 #sub-footer-note a {
-    color: #333;
+    color: #888;
 }
