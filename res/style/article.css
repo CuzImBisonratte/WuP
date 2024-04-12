@@ -1,5 +1,5 @@
 h1 {
-    color: #004571;
+    color: var(--primary-color);
     font-size: 20px;
     font-weight: 700;
     line-height: 28px;
@@ -16,7 +16,7 @@ h1+h1 {
 }
 
 h2 {
-    color: #f36639;
+    color: var(--secondary-color);
     font-size: 18px;
     font-weight: bold;
     line-height: 26px;

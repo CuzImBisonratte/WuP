@@ -4,7 +4,7 @@ main .container .downloads {
 }
 
 h1 {
-    color: #f36639;
+    color: var(--secondary-color);
     font-size: 28px;
     font-weight: 600;
     line-height: 28px;
@@ -17,14 +17,14 @@ h1 {
 
 hr {
     height: 1px;
-    background-color: #004571;
+    background-color: var(--primary-color);
     border: 0;
 
 }
 
 .download-item a {
     text-decoration: none;
-    color: #004571;
+    color: var(--primary-color);
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
