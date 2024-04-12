@@ -11,7 +11,7 @@ const config = {
             use_components: true // Use the modules in the src/components directory
         },
         htaccess: {
-            copy: true, // Copy the src/.htaccess file to the output directory
+            copy: false, // Copy the src/.htaccess file to the output directory
             generate_error_rewrites: true, // Generate error rewrites for the .htaccess file
         }
     },
@@ -21,6 +21,22 @@ const config = {
         index: {
             copy: true, // Use the src/index.html file as the output index.html
             use_components: true, // Use the modules in the src/components directory
+        },
+        downloads: {
+            base_dir: '/downloads', // The base directory where the downloads are stored relative to /res
+            generate_pages: true, // Generate download listing pages
+            list: [ // List of downloads to generate pages for
+                {
+                    dir_location: 'coronahilfen',
+                    title: 'Corona-Hilfen',
+                    url: "/corona-hilfen"
+                },
+                {
+                    dir_location: 'mandanteninfo',
+                    title: 'Mandanten-Informationen',
+                    url: "/mandanteninformationen"
+                }
+            ]
         }
     }
 };
@@ -187,3 +203,34 @@ if (config.src.htaccess.generate_error_rewrites) {
     });
 }
 fs.writeFileSync(path.join(config.build.output_dir, ".htaccess"), htaccess_content);
+
+//
+// Downloads
+//
+if (config.build.downloads.generate_pages) {
+    config.build.downloads.list.forEach(download => {
+        const download_dir = path.join("res", config.build.downloads.base_dir, download.dir_location);
+        const download_files = fs.readdirSync(download_dir, { encoding: 'utf-8' }).reverse();
+        // Create html
+        var output_content = fs.readFileSync(path.join(config.src.components_dir, "downloads.html"), { encoding: 'utf-8' });
+        output_content = component_replacer(output_content);
+        output_content = output_content.replace("{download_title}", download.title);
+        // Create download list
+        var download_list = "";
+        download_files.forEach(file => {
+            const file_path = path.join(download_dir, file);
+            const file_name = path.basename(file, path.extname(file)).replace(/_/g, " ").replace(/-/g, "/");
+            download_list += `<div class="download-item">`;
+            download_list += `<a href="/res${config.build.downloads.base_dir}/${download.dir_location}/${file}" download="${file}">`;
+            download_list += `<h2>${file_name}</h2>`;
+            download_list += `<img src="/res/images/icons/download.svg" alt="Download" />`;
+            download_list += `</a></div>`;
+            if (file != download_files[download_files.length - 1]) download_list += "<hr>";
+        });
+        output_content = output_content.replace("{download_list}", download_list);
+        // Generate output
+        const output_dir = path.join(config.build.output_dir, download.url);
+        fs.mkdirSync(output_dir, { recursive: true });
+        fs.writeFileSync(path.join(output_dir, "index.html"), output_content);
+    });
+}

@@ -1,0 +1,39 @@
+main .container .downloads {
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+h1 {
+    color: #f36639;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: left;
+    text-transform: none;
+    padding-top: 30px;
+}
+
+hr {
+    height: 1px;
+    background-color: #004571;
+    border: 0;
+
+}
+
+.download-item a {
+    text-decoration: none;
+    color: #004571;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.download-item h2 {
+    font-weight: 300;
+}
+
+.download-item img {
+    height: 2rem;
+    margin: auto 1rem auto auto;
+}
