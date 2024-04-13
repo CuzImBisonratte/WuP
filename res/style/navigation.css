@@ -21,6 +21,10 @@ nav {
     place-content: center;
 }
 
+#alt_mini_logo {
+    display: none;
+}
+
 .navbuttons {
     grid-area: navbuttons;
     display: flex;

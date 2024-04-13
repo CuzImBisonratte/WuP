@@ -34,7 +34,7 @@
               Unternehmerische Entscheidungen benötigen ein sicheres Fundament
             </p>
           </div>
-          <div class="hero-tile">
+          <div class="hero-tile noShowMobile">
             <img src="/res/images/icons/ico-rb.png" alt="" />
             <h1>Rechtsberatung</h1>
             <p>
@@ -222,6 +222,15 @@
         grid-template-areas: "left right";
         font-size: 15px;
         color: #555;
+      }
+
+      .rl-divider > div {
+        display: grid;
+        place-content: center;
+      }
+
+      .rl-divider img {
+        width: 100%;
       }
 
       .left {
