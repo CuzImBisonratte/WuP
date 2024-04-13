@@ -1,6 +1,9 @@
 :root {
+    /* Colors */
     --primary-color: #004571;
     --secondary-color: #f36639;
+    /* Other stuff */
+    --container-width: 1140px;
 }
 
 html,
@@ -13,6 +16,6 @@ body {
 }
 
 .container {
-    max-width: 1140px;
+    max-width: var(--container-width);
     margin: 0 auto;
 }
