@@ -21,6 +21,10 @@ nav {
     place-content: center;
 }
 
+.logo img {
+    height: 64px;
+}
+
 #alt_mini_logo {
     display: none;
 }
