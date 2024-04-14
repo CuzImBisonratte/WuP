@@ -4,8 +4,7 @@
 # Ignore built files
 /build
 
-# Ignore some resources
-/res/images
+# Ignore downloads
 /res/downloads
 
 # Ignore all articles
