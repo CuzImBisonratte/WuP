@@ -139,7 +139,7 @@ articles.forEach(article => {
         }
     });
 
-    // Choose right navigation item
+    // Choose right navbar item
     if (article_attributes.active_nav) article_output = article_output.replace("navbutton-activate-" + article_attributes.active_nav, "navbutton_active");
 
     // Insert custom CSS
