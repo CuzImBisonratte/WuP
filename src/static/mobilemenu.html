@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {head}
+  </head>
+  <body>
+    <a href="/"> <img src="/res/images/Logo.webp" alt="" srcset="" /></a>
+    <main>
+      <a href="/">
+        <div class="">Home</div>
+      </a>
+      <a href="/partner">
+        <div class="7">Partner</div>
+      </a>
+      <a href="/transparenz">
+        <div class="">Transparenzbericht</div>
+      </a>
+      <a href="/mandanteninformationen">
+        <div class="">Mandanteninformationen</div>
+      </a>
+      <a href="/corona-hilfen">
+        <div class="">Corona-Hilfen</div>
+      </a>
+      <a href="/karriere">
+        <div class="">Karriere</div>
+      </a>
+      <a href="/kontakt">
+        <div class="">Kontakt</div>
+      </a>
+    </main>
+    <footer>
+      <a href="/impressum">Impressum</a> |
+      <a href="/datenschutz">Datenschutz</a>
+    </footer>
+    <style>
+      html {
+        height: 100vh;
+      }
+      body {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content 1fr min-content;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+          "logo"
+          "main"
+          "bottom";
+        height: 100vh;
+        overflow: auto;
+      }
+
+      img {
+        grid-area: logo;
+        padding: 2rem;
+      }
+
+      main {
+        grid-area: main;
+        background-color: var(--primary-color);
+        display: grid;
+        place-content: center left;
+      }
+
+      main a {
+        color: white;
+        padding: 0.5rem;
+        font-size: 1.25rem;
+        text-decoration: none;
+        border-top: 1px solid white;
+        width: calc(100vw - 4rem);
+        margin-left: 1.5rem;
+      }
+
+      main a:last-child {
+        border-bottom: 1px solid white;
+      }
+
+      footer {
+        grid-area: bottom;
+        text-align: center;
+      }
+      footer a {
+        padding: 0 1rem;
+      }
+    </style>
+  </body>
+</html>

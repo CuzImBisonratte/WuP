@@ -28,6 +28,27 @@
         display: none;
 
     }
+
+    .hamburger_button {
+        display: grid;
+        place-items: center;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
+    .partner-container {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 1fr min-content !important;
+        grid-template-areas:
+            "text" "image" !important;
+    }
+
+    .partner-container .image {
+        display: grid;
+        place-items: center;
+    }
 }
 
 @media (max-width: 475px) {
@@ -60,6 +81,6 @@
 /* on touch devices */
 @media (hover: none) {
     * {
-        background-color: blue !important;
+        /* background-color: blue !important; */
     }
 }
