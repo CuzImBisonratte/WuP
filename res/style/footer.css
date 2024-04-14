@@ -14,7 +14,7 @@ footer {
     gap: 1em 1em;
     grid-auto-flow: row;
     grid-template-areas:
-        "footer_kanzlei footer_erreichbarkeit footer_contact";
+        "footer_kanzlei footer_erreichbarkeit footer_links";
 }
 
 .footer_kanzlei {
