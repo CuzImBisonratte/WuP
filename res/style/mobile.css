@@ -49,6 +49,14 @@
         display: grid;
         place-items: center;
     }
+
+    .footer-dreiteiler {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        grid-template-areas:
+            "footer_kanzlei" "footer_erreichbarkeit" "footer_contact" !important;
+
+    }
 }
 
 @media (max-width: 475px) {
