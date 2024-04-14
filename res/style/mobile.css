@@ -76,11 +76,3 @@
         display: block;
     }
 }
-
-
-/* on touch devices */
-@media (hover: none) {
-    * {
-        /* background-color: blue !important; */
-    }
-}
