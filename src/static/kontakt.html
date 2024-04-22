@@ -1,0 +1,228 @@
+<!-- navbutton: kontakt -->
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    {head}
+  </head>
+  <body>
+    {topbar} {navbar}
+    <main>
+      <div class="container">
+        <h1>Kontakt</h1>
+        <p>
+          Bitte füllen sie alle markierten (*) Felder aus. Diese Daten werden
+          benötigt.
+        </p>
+        <form action="" method="post">
+          <label for="email">E-Mail *</label>
+          <input type="email" name="email" id="email" placeholder="" required />
+          <label for="title">Betreff *</label>
+          <input type="text" name="title" id="title" placeholder="" required />
+          <label for="message">Nachricht *</label>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            required
+          ></textarea>
+          <!-- Personal Data -->
+          <h2>Ihre Daten</h2>
+          <label for="anrede">Anrede *</label>
+          <select name="anrede" id="anrede" required>
+            <option value="Frau">Frau</option>
+            <option value="Herr">Herr</option>
+            <option value="Divers">Divers</option>
+          </select>
+          <div class="rl-divider">
+            <label for="nachname">Nachname *</label>
+            <label for="vorname">Vorname</label>
+            <input type="text" name="nachname" id="nachname" required />
+            <input type="text" name="vorname" id="vorname" />
+          </div>
+          <label for="firma">Firma</label>
+          <input type="text" name="firma" id="firma" />
+          <label for="strasse">Straße</label>
+          <input type="text" name="strasse" id="strasse" />
+          <div class="rl-divider">
+            <label for="ort">Ort</label>
+            <label for="plz">PLZ</label>
+            <input type="text" name="ort" id="ort" />
+            <input type="text" name="plz" id="plz" />
+          </div>
+          <div class="rl-divider">
+            <label for="telefon">Telefon *</label>
+            <label for="fax">Telefax</label>
+            <input type="text" name="telefon" id="telefon" required />
+            <input type="text" name="fax" id="fax" />
+          </div>
+          <!-- Selections -->
+          <h2>Ich interessiere mich für:</h2>
+          <div class="rl-divider selection-divider">
+            <label for="interesse_wp">Wirtschaftsprüfung</label>
+            <label for="interesse_sb">Steuerberatung</label>
+            <input type="checkbox" name="interesse_wp" id="interesse_wp" />
+            <input type="checkbox" name="interesse_sb" id="interesse_sb" />
+            <label for="interesse_rb">Rechtsberatung</label>
+            <label for="interesse_bwl">Betriebswirtschaftliche Beratung</label>
+            <input type="checkbox" name="interesse_rb" id="interesse_rb" />
+            <input type="checkbox" name="interesse_bwl" id="interesse_bwl" />
+          </div>
+          <!-- Submit -->
+          <h2>Absenden</h2>
+          <div class="rl-divider" style="place-items: center">
+            <div style="display: flex; align-items: center">
+              <input
+                type="checkbox"
+                name="datenschutz"
+                id="datenschutz"
+                required
+              />
+              <p>
+                Ich akzeptiere die
+                <a href="/datenschutz">Datenschutzerkl&auml;rung</a> *
+              </p>
+            </div>
+            <input type="submit" value="Absenden" id="submit" />
+          </div>
+        </form>
+      </div>
+    </main>
+    {footer}
+    <script src="/res/scripts/nav-stick.js"></script>
+    <style>
+      main {
+        padding: 100px 0;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 33px;
+        position: relative;
+        text-align: left;
+        text-transform: none;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: var(--secondary-color);
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      form {
+        min-height: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f7f7f7;
+        border-radius: 0;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+        padding: 2rem calc(100% / 6);
+      }
+
+      input,
+      textarea,
+      select {
+        display: block;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.428571429;
+        color: #555555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input,
+      select {
+        height: 34px;
+        display: block;
+      }
+
+      input,
+      textarea {
+        width: calc(100% - 24px);
+      }
+
+      select {
+        width: 100%;
+      }
+
+      label {
+        margin: 1.5rem 0 0.5rem 0;
+        display: block;
+        color: #000;
+      }
+
+      .rl-divider {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0 20px;
+      }
+
+      .selection-divider {
+        text-align: center;
+        place-items: center;
+      }
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+      }
+
+      input[type="submit"] {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        display: grid;
+        place-content: center;
+        transition: background-color 0.3s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: var(--secondary-color);
+      }
+    </style>
+    <script>
+      // Get every required input + textarea
+      var requiredInputs = document.querySelectorAll(
+        "input[required], textarea[required], select[required]"
+      );
+      // Add input check
+      function checkInputs() {
+        var valid = true;
+        const submitButton = document.getElementById("submit");
+        requiredInputs.forEach(function (input) {
+          if (input.value === "") valid = false;
+          if (input.type === "checkbox" && !input.checked) valid = false;
+        });
+        if (valid) {
+          document
+            .querySelector("input[type=submit]")
+            .removeAttribute("disabled");
+          console.log("valid");
+          submitButton.style.backgroundColor = "var(--secondary-color)";
+        } else {
+          document
+            .querySelector("input[type=submit]")
+            .setAttribute("disabled", "");
+          console.log("invalid");
+          submitButton.style.backgroundColor = "var(--primary-color)";
+        }
+      }
+      // Add value change event listener
+      requiredInputs.forEach((input) =>
+        input.addEventListener("change", checkInputs)
+      );
+    </script>
+  </body>
+</html>
