@@ -13,6 +13,12 @@ const config = {
         htaccess: {
             copy: false, // Copy the src/.htaccess file to the output directory
             generate_error_rewrites: true, // Generate error rewrites for the .htaccess file
+        },
+        admin: {
+            enable: true, // Copy the src/admin directory to the output directory
+            use_components: true, // Use the modules in the src/components directory
+            path: '/admin', // The path where the admin panel is located,
+            password: '' // The password for the admin panel
         }
     },
     build: {
@@ -43,6 +49,7 @@ const config = {
 
 // Modules
 const showdown = require('showdown');
+const php_pass_hash = require('node-php-password');
 const fs = require('fs');
 const path = require('path');
 
@@ -240,5 +247,20 @@ if (config.build.downloads.generate_pages) {
         const output_dir = path.join(config.build.output_dir, download.url);
         fs.mkdirSync(output_dir, { recursive: true });
         fs.writeFileSync(path.join(output_dir, "index.html"), output_content);
+    });
+}
+
+// 
+// Admin
+//
+if (config.src.admin.enable) {
+    const admin_dir = path.join(config.build.output_dir, config.src.admin.path);
+    fs.mkdirSync(admin_dir, { recursive: true });
+    const pages = fs.readdirSync("src/admin", { encoding: 'utf-8' });
+    const hashed_password = php_pass_hash.hash(config.src.admin.password);
+    pages.forEach(page => {
+        const page_content = fs.readFileSync(path.join("src/admin", page), { encoding: 'utf-8' });
+        const page_output = (config.src.admin.use_components ? component_replacer(page_content) : page_content).replace("?ADMIN_PASSWORD?", hashed_password);
+        fs.writeFileSync(path.join(admin_dir, page), page_output);
     });
 }
