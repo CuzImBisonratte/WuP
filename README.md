@@ -4,6 +4,14 @@
 
 Dies ist ein selber geschriebener modularer statische-Webseiten-Generator. Er ist mit node.js geschrieben und benutzt als Eingabe hauptsächlich Markdown-Dateien. Die Ausgabe ist eine statische Webseite. (Mit ausnahme von Formularen und dem Admin-Panel)
 
+# Features
+
+## Komponenten und Ersetzungen
+Es gibt drei Arten von Komponenten:
+- `{componentName}` - Ersetzt den Platzhalter mit dem Inhalt der HTML-Komponenten-Datei wärend des Bauprozesses.
+- `?componentName?` - Ersetzt den Platzhalter mit dem Inhalt der Datei während des Outputs (Per PHP).
+- `[icon:iconName]` - Ersetzt den Platzhalter mit dem SVG-Code des Icons.
+
 # Usage
 
 ## Installation
