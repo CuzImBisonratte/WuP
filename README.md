@@ -1,15 +1,4 @@
-<a href="https://gitmoji.dev">
-  <img
-    src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=for-the-badge"
-    alt="Gitmoji"
-  />
-</a>
-<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/cuzimbisonratte/WuP?style=for-the-badge">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cuzimbisonratte/wup?style=for-the-badge">
-<img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/cuzimbisonratte/WuP?style=for-the-badge">
-
-
-
+<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=for-the-badge" alt="Gitmoji" /> <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/cuzimbisonratte/WuP?style=for-the-badge"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cuzimbisonratte/wup?style=for-the-badge"> <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/cuzimbisonratte/WuP?style=for-the-badge">
 
 # WuP Homepage
 
