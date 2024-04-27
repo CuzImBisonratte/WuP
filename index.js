@@ -243,6 +243,11 @@ if (config.build.downloads.generate_pages) {
             if (file != download_files[download_files.length - 1]) download_list += "<hr>";
         });
         output_content = output_content.replace("{download_list}", download_list);
+        // Search the output for navbutton: tags and activate them
+        if (output_content.includes("<!-- navbutton: ")) {
+            const navbutton_name = output_content.match(/<!-- navbutton: (.*) -->/)[1];
+            output_content = output_content.replace("navbutton-activate-" + navbutton_name, "navbutton_active");
+        }
         // Generate output
         const output_dir = path.join(config.build.output_dir, download.url);
         fs.mkdirSync(output_dir, { recursive: true });
