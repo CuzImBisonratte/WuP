@@ -1,3 +1,6 @@
+# WuP Homepage
+
+Dies ist ein selber geschriebener modularer statische-Webseiten-Generator. Er ist mit node.js geschrieben und benutzt als Eingabe hauptsächlich Markdown-Dateien. Die Ausgabe ist eine statische Webseite. (Mit ausnahme von Formularen und dem Admin-Panel)
 
 # Usage
 
