@@ -262,6 +262,7 @@ if (config.src.admin.enable) {
     const admin_dir = path.join(config.build.output_dir, config.src.admin.path);
     fs.mkdirSync(admin_dir, { recursive: true });
     const pages = fs.readdirSync("src/admin", { encoding: 'utf-8' });
+    if (config.src.admin.password == "") console.error("\x1b[31m%s\x1b[0m", "No admin password set in config.");
     const hashed_password = php_pass_hash.hash(config.src.admin.password);
     pages.forEach(page => {
         const page_content = fs.readFileSync(path.join("src/admin", page), { encoding: 'utf-8' });
