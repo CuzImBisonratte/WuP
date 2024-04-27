@@ -32,6 +32,7 @@ const config = {
         downloads: {
             base_dir: '/downloads', // The base directory where the downloads are stored relative to /res
             generate_pages: true, // Generate download listing pages
+            generate_empty_php_page: true, // Generate an empty download-page for PHP generation (Admin-Panel)
             list: [ // List of downloads to generate pages for
                 {
                     dir_location: 'coronahilfen',
@@ -218,6 +219,7 @@ if (config.src.htaccess.generate_error_rewrites) {
         htaccess_content += `ErrorDocument ${code} /errors/${code}.html\n`;
     });
 }
+htaccess_content += "RewriteRule ^admin/res/ - [F,L]\n";
 fs.writeFileSync(path.join(config.build.output_dir, ".htaccess"), htaccess_content);
 
 //
@@ -255,6 +257,13 @@ if (config.build.downloads.generate_pages) {
         fs.writeFileSync(path.join(output_dir, "index.html"), output_content);
     });
 }
+if (config.build.downloads.generate_empty_php_page) {
+    const empty_php = fs.readFileSync(config.src.components_dir + "/downloads.html", { encoding: 'utf-8' })
+        .replace("{download_title}", "?DOWNLOAD_TITLE?")
+        .replace("{download_list}", "?DOWNLOAD_LIST?");
+    fs.mkdirSync(path.join(config.build.output_dir, "/admin/res"), { recursive: true });
+    fs.writeFileSync(path.join(config.build.output_dir, "/admin/res/downloads.html"), component_replacer(empty_php));
+}
 
 // 
 // Admin
@@ -267,7 +276,9 @@ if (config.src.admin.enable) {
     const hashed_password = php_pass_hash.hash(config.src.admin.password);
     pages.forEach(page => {
         const page_content = fs.readFileSync(path.join("src/admin", page), { encoding: 'utf-8' });
-        const page_output = (config.src.admin.use_components ? component_replacer(page_content) : page_content).replace("?ADMIN_PASSWORD?", hashed_password);
+        const page_output = (config.src.admin.use_components ? component_replacer(page_content) : page_content)
+            .replace("{ADMIN_PASSWORD}", hashed_password)
+            .replace("{DOWNLOADS}", JSON.stringify(config.build.downloads.list));
         fs.writeFileSync(path.join(admin_dir, page), page_output);
     });
 }
