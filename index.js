@@ -1,7 +1,8 @@
 // Config
 const config = {
     src: {
-        components_dir: 'src/components', // The directory where the components are stored (like header, footer, etc.)
+        components_dir: 'src/components', // The directory where the components are stored (like header, footer, etc.),
+        icons_dir: 'res/images/icons', // The directory where the icons are stored
         static: {
             copy: true, // Copy the src/static directory to the output directory
             use_components: true // Use the modules in the src/components directory
@@ -82,7 +83,7 @@ function component_replacer(content, article = "") {
     });
     content = content.replace("{content}", article);
     // SVG-Icon replacer
-    const icons = fs.readdirSync("res/images/icons");
+    const icons = fs.readdirSync(config.icons_dir);
     icons.forEach(icon => {
         if (path.extname(icon) != ".svg") return;
         const icon_name = path.basename(icon, path.extname(icon));
