@@ -83,7 +83,7 @@ function component_replacer(content, article = "") {
     });
     content = content.replace("{content}", article);
     // SVG-Icon replacer
-    const icons = fs.readdirSync(config.icons_dir);
+    const icons = fs.readdirSync(config.src.icons_dir);
     icons.forEach(icon => {
         if (path.extname(icon) != ".svg") return;
         const icon_name = path.basename(icon, path.extname(icon));
