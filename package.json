@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "node-php-password": "^0.1.2",
     "showdown": "^2.1.0"
   }
 }
