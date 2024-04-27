@@ -1,6 +1,6 @@
 <?php
 
-$password = '?ADMIN_PASSWORD?';
+$password = '{ADMIN_PASSWORD}';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['password']) && password_verify($_POST['password'], $password)) {
