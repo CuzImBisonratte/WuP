@@ -65,6 +65,7 @@ fs.cpSync("res", "build/res", { recursive: true });
 
 // Function to copy components to the output directory
 function component_replacer(content, article = "") {
+    // HTML-Component replacer
     const components = fs.readdirSync(config.src.components_dir);
     components.forEach(component => {
         const component_path = path.join(config.src.components_dir, component);
@@ -73,6 +74,13 @@ function component_replacer(content, article = "") {
         content = content.replace(new RegExp(`{${component_name}}`, 'g'), component_content);
     });
     content = content.replace("{content}", article);
+    // SVG-Icon replacer
+    const icons = fs.readdirSync("res/images/icons");
+    icons.forEach(icon => {
+        if (path.extname(icon) != ".svg") return;
+        const icon_name = path.basename(icon, path.extname(icon));
+        content = content.replace(new RegExp(`\\[icon:${icon_name}\\]`, 'g'), fs.readFileSync(path.join("res/images/icons", icon), { encoding: 'utf-8' }));
+    });
     return content;
 }
 
