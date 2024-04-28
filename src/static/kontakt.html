@@ -35,38 +35,68 @@
             <option value="Divers">Divers</option>
           </select>
           <div class="rl-divider">
-            <label for="nachname">Nachname *</label>
-            <label for="vorname">Vorname</label>
-            <input type="text" name="nachname" id="nachname" required />
-            <input type="text" name="vorname" id="vorname" />
+            <label for="nachname" class="label-l">Nachname *</label>
+            <label for="vorname" class="label-r">Vorname</label>
+            <input
+              type="text"
+              name="nachname"
+              id="nachname"
+              class="input-l"
+              required
+            />
+            <input type="text" name="vorname" id="vorname" class="input-r" />
           </div>
           <label for="firma">Firma</label>
           <input type="text" name="firma" id="firma" />
           <label for="strasse">Straße</label>
           <input type="text" name="strasse" id="strasse" />
           <div class="rl-divider">
-            <label for="ort">Ort</label>
-            <label for="plz">PLZ</label>
-            <input type="text" name="ort" id="ort" />
-            <input type="text" name="plz" id="plz" />
+            <label for="ort" class="label-l">Ort</label>
+            <label for="plz" class="label-r">PLZ</label>
+            <input type="text" name="ort" id="ort" class="input-l" />
+            <input type="text" name="plz" id="plz" class="input-r" />
           </div>
           <div class="rl-divider">
-            <label for="telefon">Festnetz</label>
-            <label for="mobile">Mobiltelefon</label>
-            <input type="text" name="telefon" id="telefon" />
-            <input type="text" name="mobile" id="mobile" />
+            <label for="telefon" class="label-l">Festnetz</label>
+            <label for="mobile" class="label-r">Mobiltelefon</label>
+            <input type="text" name="telefon" id="telefon" class="input-l" />
+            <input type="text" name="mobile" id="mobile" class="input-r" />
           </div>
           <!-- Selections -->
           <h2>Ich interessiere mich für:</h2>
           <div class="rl-divider selection-divider">
-            <label for="interesse_wp">Wirtschaftsprüfung</label>
-            <label for="interesse_sb">Steuerberatung</label>
-            <input type="checkbox" name="interesse_wp" id="interesse_wp" />
-            <input type="checkbox" name="interesse_sb" id="interesse_sb" />
-            <label for="interesse_rb">Rechtsberatung</label>
-            <label for="interesse_bwl">Betriebswirtschaftliche Beratung</label>
-            <input type="checkbox" name="interesse_rb" id="interesse_rb" />
-            <input type="checkbox" name="interesse_bwl" id="interesse_bwl" />
+            <label for="interesse_wp" class="label-l">Wirtschaftsprüfung</label>
+            <label for="interesse_sb" class="label-r">Steuerberatung</label>
+            <input
+              type="checkbox"
+              name="interesse_wp"
+              id="interesse_wp"
+              class="input-l"
+            />
+            <input
+              type="checkbox"
+              name="interesse_sb"
+              id="interesse_sb"
+              class="input-r"
+            />
+          </div>
+          <div class="rl-divider selection-divider">
+            <label for="interesse_rb" class="label-l">Rechtsberatung</label>
+            <label for="interesse_bwl" class="label-r"
+              >Betriebswirtschaftliche Beratung</label
+            >
+            <input
+              type="checkbox"
+              name="interesse_rb"
+              id="interesse_rb"
+              class="input-l"
+            />
+            <input
+              type="checkbox"
+              name="interesse_bwl"
+              id="interesse_bwl"
+              class="input-r"
+            />
           </div>
           <!-- Submit -->
           <h2>Absenden</h2>
@@ -163,7 +193,27 @@
       .rl-divider {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
         grid-gap: 0 20px;
+        grid-template-areas:
+          "label-l label-r"
+          "input-l input-r";
+      }
+
+      .label-l {
+        grid-area: label-l;
+      }
+
+      .label-r {
+        grid-area: label-r;
+      }
+
+      .input-l {
+        grid-area: input-l;
+      }
+
+      .input-r {
+        grid-area: input-r;
       }
 
       .selection-divider {
@@ -194,6 +244,14 @@
 
       input[type="submit"]:hover {
         background-color: var(--secondary-color);
+      }
+
+      @media screen and (max-width: 900px) {
+        .rl-divider {
+          grid-template-columns: 1fr !important;
+          grid-template-rows: 1fr 1fr !important;
+          grid-template-areas: "label-l" "input-l" "label-r" "input-r" !important;
+        }
       }
     </style>
     <script>
