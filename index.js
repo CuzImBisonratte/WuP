@@ -46,6 +46,25 @@ const config = {
                 }
             ]
         }
+    },
+    dynamic: {
+        contactForm: {
+            enable: true,
+            recipient: '',
+            subject: 'Kontaktformular',
+            url: '/kontakt',
+            success_page: 'erfolg',
+            sender: {
+                name: 'Wissler & Protzen',
+                credentials: {
+                    mail: '',
+                    host: '',
+                    username: '',
+                    password: '',
+                    port: 465,
+                }
+            }
+        }
     }
 };
 
@@ -281,4 +300,36 @@ if (config.src.admin.enable) {
             .replace("{DOWNLOADS}", JSON.stringify(config.build.downloads.list));
         fs.writeFileSync(path.join(admin_dir, page), page_output);
     });
+}
+
+// 
+// Kontaktformular
+// 
+if (config.dynamic.contactForm.enable) {
+    // contact form
+    const contact_form = fs.readFileSync("src/contact/kontakt.html", { encoding: 'utf-8' });
+    var output_content = component_replacer(contact_form);
+    if (output_content.includes("<!-- navbutton: ")) {
+        const navbutton_name = output_content.match(/<!-- navbutton: (.*) -->/)[1];
+        output_content = output_content.replace("navbutton-activate-" + navbutton_name, "navbutton_active");
+    }
+    const contact_form_output_path = path.join(config.build.output_dir, config.dynamic.contactForm.url, "index.html");
+    fs.mkdirSync(path.dirname(contact_form_output_path), { recursive: true });
+    fs.writeFileSync(contact_form_output_path, output_content);
+    // success page
+    const success_page = fs.readFileSync("src/contact/success.html", { encoding: 'utf-8' });
+    var success_output = component_replacer(success_page);
+    if (success_output.includes("<!-- navbutton: ")) {
+        const navbutton_name = success_output.match(/<!-- navbutton: (.*) -->/)[1];
+        success_output = success_output.replace("navbutton-activate-" + navbutton_name, "navbutton_active");
+    }
+    const success_output_path = path.join(config.build.output_dir, config.dynamic.contactForm.url, config.dynamic.contactForm.success_page + ".html");
+    fs.writeFileSync(success_output_path, success_output);
+    // sendMail.php
+    var sendMail_output = fs.readFileSync("src/contact/sendMail.php", { encoding: 'utf-8' })
+        .replace("{sender_data}", JSON.stringify(config.dynamic.contactForm.sender))
+        .replace("{recipient}", config.dynamic.contactForm.recipient)
+        .replace("{success_url}", config.dynamic.contactForm.url + "/" + config.dynamic.contactForm.success_page + ".html");
+    const sendMail_output_path = path.join(config.build.output_dir, config.dynamic.contactForm.url, "sendMail.php");
+    fs.writeFileSync(sendMail_output_path, sendMail_output);
 }
