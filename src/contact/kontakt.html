@@ -328,37 +328,5 @@
         }
       }
     </style>
-    <script>
-      // Get every required input + textarea
-      var requiredInputs = document.querySelectorAll(
-        "input[required], textarea[required], select[required]"
-      );
-      // Add input check
-      function checkInputs() {
-        var valid = true;
-        const submitButton = document.getElementById("submit");
-        requiredInputs.forEach(function (input) {
-          if (input.value === "") valid = false;
-          if (input.type === "checkbox" && !input.checked) valid = false;
-        });
-        if (valid) {
-          document
-            .querySelector("input[type=submit]")
-            .removeAttribute("disabled");
-          console.log("valid");
-          submitButton.style.backgroundColor = "var(--secondary-color)";
-        } else {
-          document
-            .querySelector("input[type=submit]")
-            .setAttribute("disabled", "");
-          console.log("invalid");
-          submitButton.style.backgroundColor = "var(--primary-color)";
-        }
-      }
-      // Add value change event listener
-      requiredInputs.forEach((input) =>
-        input.addEventListener("change", checkInputs)
-      );
-    </script>
   </body>
 </html>
