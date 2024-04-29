@@ -15,15 +15,30 @@
         </p>
         <form action="sendMail.php" method="post">
           <label for="email">E-Mail *</label>
-          <input type="email" name="email" id="email" placeholder="" required />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder=""
+            inputmode="email"
+            required
+          />
           <label for="title">Betreff *</label>
-          <input type="text" name="title" id="title" placeholder="" required />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder=""
+            maxlength="100"
+            required
+          />
           <label for="message">Nachricht *</label>
           <textarea
             name="message"
             id="message"
             cols="30"
             rows="10"
+            maxlength="2500"
             required
           ></textarea>
           <!-- Personal Data -->
@@ -42,25 +57,77 @@
               name="nachname"
               id="nachname"
               class="input-l"
+              pattern="[a-zA-Z0-9s]+"
+              inputmode="text"
+              maxlength="100"
               required
             />
-            <input type="text" name="vorname" id="vorname" class="input-r" />
+            <input
+              type="text"
+              name="vorname"
+              id="vorname"
+              class="input-r"
+              pattern="[a-zA-Z0-9s]+"
+              inputmode="text"
+              maxlength="100"
+              required
+            />
           </div>
           <label for="firma">Firma</label>
-          <input type="text" name="firma" id="firma" />
+          <input
+            type="text"
+            name="firma"
+            id="firma"
+            inputmode="text"
+            maxlength="100"
+          />
           <label for="strasse">Straße</label>
-          <input type="text" name="strasse" id="strasse" />
+          <input
+            type="text"
+            name="strasse"
+            id="strasse"
+            inputmode="text"
+            maxlength="65"
+          />
           <div class="rl-divider">
             <label for="ort" class="label-l">Ort</label>
             <label for="plz" class="label-r">PLZ</label>
-            <input type="text" name="ort" id="ort" class="input-l" />
-            <input type="text" name="plz" id="plz" class="input-r" />
+            <input
+              type="text"
+              name="ort"
+              id="ort"
+              class="input-l"
+              inputmode="text"
+              maxlength="85"
+            />
+            <input
+              type="text"
+              name="plz"
+              id="plz"
+              class="input-r"
+              pattern="(\d{5}?)"
+              inputmode="numeric"
+            />
           </div>
           <div class="rl-divider">
             <label for="telefon" class="label-l">Festnetz</label>
             <label for="mobile" class="label-r">Mobiltelefon</label>
-            <input type="text" name="telefon" id="telefon" class="input-l" />
-            <input type="text" name="mobile" id="mobile" class="input-r" />
+            <input
+              type="text"
+              name="telefon"
+              id="telefon"
+              class="input-l"
+              inputmode="tel"
+              pattern="[0-9+#\/\s\(\)\-]*"
+            />
+            <input
+              type="text"
+              name="mobile"
+              id="mobile"
+              class="input-r"
+              inputmode="tel"
+              pattern="[0-9+#\/\s\(\)\-]*"
+            />
           </div>
           <!-- Selections -->
           <h2>Ich interessiere mich für:</h2>
