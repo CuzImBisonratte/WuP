@@ -50,6 +50,27 @@ $mailbody_alt .= " ⋅ Telefon: " . $input["telefon"] . "\n";
 $mailbody .= "<li>Mobile: " . $input["mobile"] . "</li>";
 $mailbody_alt .= " ⋅ Mobile: " . $input["mobile"] . "\n";
 $mailbody .= "</ul>";
+$mailbody_alt .= "\n\n";
+
+$mailbody .= "<h2>Interessen</h2>";
+$mailbody_alt .= "Interessen\n\n";
+if (isset($input['interesse_wp']) && $input['interesse_wp'] == "on") {
+    $mailbody .= "<p>Wirtschaftsprüfung</p>";
+    $mailbody_alt .= "Wirtschaftsprüfung\n";
+}
+if (isset($input['interesse_sb']) && $input['interesse_sb'] == "on") {
+    $mailbody .= "<p>Steuerberatung</p>";
+    $mailbody_alt .= "Steuerberatung\n";
+}
+if (isset($input['interesse_rb']) && $input['interesse_rb'] == "on") {
+    $mailbody .= "<p>Rechtsberatung</p>";
+    $mailbody_alt .= "Rechtsberatung\n";
+}
+if (isset($input['interesse_bwl']) && $input['interesse_bwl'] == "on") {
+    $mailbody .= "<p>Betriebswirtschaftliche Beratung</p>";
+    $mailbody_alt .= "Betriebswirtschaftliche Beratung\n";
+}
+$mailbody_alt .= "\n\n";
 
 $mailbody .= "<h2>Nachricht</h2>";
 $mailbody_alt .= "Nachricht\n\n";
@@ -62,7 +83,6 @@ $mail = new PHPMailer();
 
 try {
     // Server settings
-    $mail->SMTPDebug  = SMTP::DEBUG_SERVER;                         //Enable verbose debug output
     $mail->isSMTP();                                                //Send using SMTP
     $mail->Host       = $sender["credentials"]["host"];             //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                       //Enable SMTP authentication
@@ -78,6 +98,7 @@ try {
     // Content
     $mail->isHTML(true);                                            //Set email format to HTML
     $mail->Subject = 'Kontaktformular';
+    $mail->CharSet = 'UTF-8';
 
     $mail->Body       = $mailbody;
     $mail->AltBody    = $mailbody_alt;
