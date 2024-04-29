@@ -94,6 +94,7 @@ try {
     // Recipients
     $mail->setFrom($sender["credentials"]["mail"], $sender["name"]);
     $mail->addAddress($recipient);                                  //Add a recipient
+    $mail->addReplyTo($input["email"], $input["vorname"] . " " . $input["nachname"]);
 
     // Content
     $mail->isHTML(true);                                            //Set email format to HTML
