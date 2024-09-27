@@ -12,7 +12,7 @@ const config = {
             use_components: true // Use the modules in the src/components directory
         },
         htaccess: {
-            copy: false, // Copy the src/.htaccess file to the output directory
+            copy: true, // Copy the src/.htaccess file to the output directory
             generate_error_rewrites: true, // Generate error rewrites for the .htaccess file
         },
         admin: {
@@ -49,7 +49,13 @@ const config = {
     },
     dynamic: {
         contactForm: {
-            enable: true,
+            enable: false,
+            disabledData: {
+                name: 'Kontaktformular',
+                email: 'wpg@protzen-wissler.de',
+                phone: '+49 (0) 72 21 - 30 57 - 0',
+                phone_link: '+49722130570',
+            },
             recipient: '',
             subject: 'Kontaktformular',
             url: '/kontakt',
@@ -332,4 +338,19 @@ if (config.dynamic.contactForm.enable) {
         .replace("{success_url}", config.dynamic.contactForm.url + "/" + config.dynamic.contactForm.success_page + ".html");
     const sendMail_output_path = path.join(config.build.output_dir, config.dynamic.contactForm.url, "sendMail.php");
     fs.writeFileSync(sendMail_output_path, sendMail_output);
+} else {
+    // contact form disabled
+    const contact_form = fs.readFileSync("src/contact/deactivated.html", { encoding: 'utf-8' });
+    var output_content = component_replacer(contact_form);
+    output_content = output_content.replace("??TEL??", config.dynamic.contactForm.disabledData.phone);
+    output_content = output_content.replace("??TEL_LINK??", "tel:" + config.dynamic.contactForm.disabledData.phone_link);
+    output_content = output_content.replace("??MAIL??", config.dynamic.contactForm.disabledData.email);
+    output_content = output_content.replace("??MAIL_LINK??", "mailto:" + config.dynamic.contactForm.disabledData.email);
+    if (output_content.includes("<!-- navbutton: ")) {
+        const navbutton_name = output_content.match(/<!-- navbutton: (.*) -->/)[1];
+        output_content = output_content.replace("navbutton-activate-" + navbutton_name, "navbutton_active");
+    }
+    const contact_form_output_path = path.join(config.build.output_dir, config.dynamic.contactForm.url, "index.html");
+    fs.mkdirSync(path.dirname(contact_form_output_path), { recursive: true });
+    fs.writeFileSync(contact_form_output_path, output_content);
 }

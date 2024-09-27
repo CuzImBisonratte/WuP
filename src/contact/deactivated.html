@@ -1,0 +1,78 @@
+<!-- navbutton: kontakt -->
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        {head}
+    </head>
+    <body>
+        {topbar} {navbar}
+        <main>
+            <div class="container">
+                <h1>Kontakt</h1>
+                <div id="contactData">
+                    <p></p>
+                    <h2>
+                        Haben Sie Fragen oder Wünsche? Wir sind gerne für Sie
+                        da!
+                    </h2>
+                    <p>
+                        Sie erreichen uns telefonisch unter:
+                        <br />
+                        <a href="??TEL_LINK??">??TEL??</a>
+                        <br />
+                        oder schreiben Sie uns eine E-Mail an: <br />
+                        <a href="??MAIL_LINK??">??MAIL??</a>
+                    </p>
+                    <p>
+                        Wir beantworten Ihre Anfragen schnellstmöglich und
+                        beraten Sie gerne zu unseren Dienstleistungen.
+                    </p>
+                    <p>Wir freuen uns auf Ihre Nachricht!</p>
+                </div>
+            </div>
+        </main>
+        {footer}{subfooter}
+        <script src="/res/scripts/nav-stick.js"></script>
+        <style>
+            main {
+                padding: 100px 0;
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 24px;
+            }
+
+            h1 {
+                color: var(--primary-color);
+                font-size: 20px;
+                font-weight: 600;
+                line-height: 33px;
+                position: relative;
+                text-align: left;
+                text-transform: none;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                color: var(--secondary-color);
+                font-size: 24px;
+                font-weight: 600;
+            }
+
+            #contactData a {
+                color: var(--secondary-color);
+                text-decoration: underline;
+                font-weight: 600;
+            }
+
+            #contactData {
+                min-height: 20px;
+                padding: 20px;
+                margin-bottom: 20px;
+                background-color: #f7f7f7;
+                border-radius: 0;
+                box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05);
+                padding: 2rem calc(100% / 6);
+            }
+        </style>
+    </body>
+</html>
