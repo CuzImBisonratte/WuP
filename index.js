@@ -52,7 +52,7 @@ const config = {
             enable: false,
             disabledData: {
                 name: 'Kontaktformular',
-                email: 'wpg@protzen-wissler.de',
+                email: 'wpg@wissler-protzen.de',
                 phone: '+49 (0) 72 21 - 30 57 - 0',
                 phone_link: '+49722130570',
             },
